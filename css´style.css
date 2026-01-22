@@ -1,1 +1,221 @@
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
 
+:root {
+  --gold: #ff8c00;
+  --dark: #111;
+  --gray: #f5f5f7;
+}
+
+body {
+  background: var(--gray);
+  color: #1d1d1f;
+}
+
+/* ================= HEADER ================= */
+header {
+  background: linear-gradient(180deg, #000, #111);
+  color: #fff;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+header span {
+  color: var(--gold);
+}
+
+/* ================= FILTROS ================= */
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 30px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  border: 1px solid #ddd;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filter-btn.active, .filter-btn:hover {
+  background: var(--gold);
+  color: #fff;
+}
+
+/* ================= GRID ================= */
+.grid {
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.grid h2 {
+  grid-column: 1 / -1;
+  margin-bottom: 20px;
+}
+
+/* ================= CARD ================= */
+.card {
+  background: #fff;
+  padding: 24px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,.08);
+  transition: transform 0.2s, box-shadow 0.3s;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,.15);
+}
+
+.card .modelo {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+.price {
+  font-size: 1.4rem;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.installments {
+  font-size: 0.9rem;
+  margin-top: 6px;
+  color: #555;
+}
+
+/* APPLE ICON */
+.apple-icon {
+  font-size: 3rem;
+  color: #000;
+  transition: color 0.3s;
+  margin-bottom: 10px;
+}
+
+/* ================= BOTÃO ================= */
+.btn-buy {
+  display: block;
+  margin: 14px auto 0 auto;
+  background: linear-gradient(135deg, #ff8c00, #ffa733);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.btn-buy:hover {
+  opacity: 0.9;
+}
+
+/* ================= TRADE-IN ================= */
+.tradein {
+  max-width: 600px;
+  background: #fff;
+  margin: 60px auto;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.08);
+}
+
+.tradein h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--dark);
+}
+
+.tradein form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tradein input[type="text"],
+.tradein input[type="number"] {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+}
+
+.tradein label {
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tradein button {
+  padding: 12px;
+  border-radius: 999px;
+  background: var(--gold);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.tradein button:hover {
+  opacity: 0.9;
+}
+
+/* ================= WHATSAPP FLOAT ================= */
+.wpp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25d366;
+  color: #fff;
+  padding: 16px;
+  border-radius: 50%;
+  font-size: 2rem;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.wpp-float:hover {
+  transform: scale(1.1);
+}
+
+/* ================= FOOTER ================= */
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.9rem;
+  color: #555;
+  background: #f0f0f0;
+  margin-top: 40px;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .apple-icon {
+    font-size: 2.5rem;
+  }
+}
