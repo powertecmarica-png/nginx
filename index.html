@@ -441,7 +441,7 @@ document.getElementById('tradeForm').addEventListener('submit', e => {
   e.preventDefault();
 
   if (document.getElementById('replaced').checked) {
-    alert('Não aceitamos aparelhos com peças trocadas.');
+    alert('Não aceitamos Iphones recondicionados.');
     return;
   }
 
@@ -450,11 +450,12 @@ document.getElementById('tradeForm').addEventListener('submit', e => {
     .map(i => i.value);
 
   const msg =
-`Quero simular meu iPhone como entrada:
+`Olá, vim do site e simular meu iPhone como entrada:
 Modelo: ${data[0]}
 Memória: ${data[1]}
 Cor: ${data[2]}
 Bateria: ${data[3]}%`;
+iphone de interesse: ${data[4]};
 
   window.open(`https://wa.me/5521967296969?text=${encodeURIComponent(msg)}`);
 });
