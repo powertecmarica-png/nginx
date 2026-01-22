@@ -7,34 +7,124 @@
 <meta name="description" content="Power Tec Maricá - iPhones lacrados e seminovos com garantia. Aceitamos seu iPhone como entrada.">
 <meta name="author" content="Power Tec">
 
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+<!-- Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="style.css">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
+:root {
+  --gold:#ff8c00; --dark:#111; --gray:#f5f5f7; --white:#fff; --red:#c0392b; --text-dark:#1d1d1f; --text-light:#555;
+}
+body { background: var(--gray); color: var(--text-dark); display: flex; flex-direction: column; min-height: 100vh; }
+
+header {
+  background: linear-gradient(180deg,#000,#111);
+  color:#fff; text-align:center; padding:60px 20px;
+}
+header h1 { font-size:3rem; }
+header h1 span { color: var(--gold); }
+.header-sub { margin-top:10px; font-size:1.2rem; }
+.cta-sim {
+  margin-top:20px; font-size:1rem;
+}
+.btn-sim {
+  display:inline-block; margin-top:12px; padding:14px 28px;
+  background: var(--gold); color:#fff; border-radius:999px; text-decoration:none; font-weight:600; transition:.3s;
+}
+.btn-sim:hover { transform:translateY(-2px); }
+
+.filters {
+  display:flex; justify-content:center; gap:10px; margin:30px; flex-wrap:wrap;
+}
+.filter-btn {
+  padding:12px 22px; border-radius:999px; border:1px solid #ddd; background:#fff; cursor:pointer;
+}
+.filter-btn.active, .filter-btn:hover { background:var(--gold); color:#fff; }
+
+.grid {
+  max-width:1200px; margin:auto; padding:30px 20px;
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px;
+}
+.grid h2 { grid-column:1/-1; text-align:center; margin-bottom:20px; font-size:1.8rem; }
+.grid h2 span { font-size:1rem; color:var(--gold); }
+
+.card {
+  background:#fff; padding:24px; border-radius:20px; text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,.08); transition:.3s; max-width:300px; margin:auto;
+}
+.card:hover { transform:translateY(-5px); }
+.apple-icon { font-size:3rem; margin-bottom:10px; transition:.3s; }
+.card:hover .apple-icon { color:var(--gold); }
+.price { font-size:1.3rem; color:var(--gold); font-weight:700; }
+.installments { font-size:.8rem; color:var(--text-light); }
+
+.btn-buy {
+  margin-top:12px; padding:10px 18px; border-radius:999px;
+  background: linear-gradient(135deg,#ff8c00,#ffa733); color:#fff; border:none; cursor:pointer; font-weight:600; font-size:0.9rem; transition:.3s;
+}
+.btn-buy:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,.2); }
+
+.tradein {
+  max-width:600px; background:#fff; margin:60px auto; padding:30px; border-radius:20px; text-align:center;
+}
+.trade-alert { color:var(--red); margin-bottom:15px; font-weight:600; }
+.tradein form { display:flex; flex-direction:column; gap:12px; }
+.tradein input { padding:12px; border-radius:10px; border:1px solid #ddd; }
+.tradein input:focus { border-color:var(--gold); outline:none; box-shadow:0 0 5px var(--gold); }
+.tradein button { padding:12px; border-radius:999px; background:var(--gold); color:#fff; border:none; font-weight:600; cursor:pointer; transition:.3s; }
+.tradein button:hover { transform:translateY(-2px); }
+
+.wpp-float {
+  position:fixed; bottom:20px; right:20px;
+  background:#25d366; color:#fff; padding:16px; border-radius:50%; font-size:2rem;
+  z-index:999;
+}
+
+footer { text-align:center; padding:30px; color:var(--text-light); margin-top:auto; font-size:0.9rem; }
+
+.google-review {
+  text-align:center; margin:30px 0;
+}
+.google-review a {
+  background:#4285F4; color:#fff; padding:12px 24px; border-radius:999px;
+  font-weight:600; text-decoration:none; transition:.3s;
+}
+.google-review a:hover { transform:translateY(-2px); }
+
+@media (max-width:480px) {
+  .grid { grid-template-columns:1fr; }
+  .filter-btn { flex:1 1 100%; text-align:center; }
+  header h1 { font-size:2.2rem; }
+  .btn-sim { padding:12px 20px; font-size:0.9rem; }
+}
+</style>
 </head>
 <body>
 
-<!-- ================= HEADER ================= -->
 <header>
-  <h1>Power <span>Tec</span></h1>
-  <p>Há 7 anos no mercado • iPhones com procedência e garantia</p>
-<link rel="stylesheet" href="style.css">
+  <h1>Power <span>Tec</span> iPhones</h1>
+  <p class="header-sub">💎 Há 7 anos no mercado • iPhones com procedência e garantia 🛡️</p>
+  
   <div class="cta-sim">
-    <strong>Aceitamos seu iPhone como entrada</strong>
-    <p>Faça uma simulação rápida pelo WhatsApp</p>
-    <a href="#tradein" class="btn-sim">Faça uma simulação</a>
+    <p>💼 Aceitamos seu seminovo como entrada!</p>
+    <a href="#tradein" class="btn-sim">✨ Faça uma simulação ✨</a>
   </div>
 </header>
 
-<!-- ================= FILTROS ================= -->
 <div class="filters">
-  <button class="filter-btn active" data-filter="all">Todos</button>
-  <button class="filter-btn" data-filter="lacrado">Lacrados</button>
-  <button class="filter-btn" data-filter="seminovo">Seminovos</button>
+  <button class="filter-btn active" data-filter="all">Todos 🏆</button>
+  <button class="filter-btn" data-filter="lacrado">Lacrados 🔑</button>
+  <button class="filter-btn" data-filter="seminovo">Seminovos 💎</button>
 </div>
 
+<section class="grid" data-section="lacrado">
+<h2>Lacrados <span>• Garantia Apple 1 Ano 🛡️</span></h2>
+  <div class="card lacrado">
 <!-- ================= LACRADOS ================= -->
 
 <section class="grid" data-section="lacrado">
@@ -105,7 +195,8 @@
   </div>
 </section>
 
-
+<section class="grid" data-section="seminovo">
+  <h2>Seminovos <span>• Avaliação Premium 💼</span></h2>
 <!-- ================= SEMINOVOS ================= -->
 <section class="grid" data-section="seminovo">
   <h2>Seminovos <span>ATUALIZADO </span></h2>
@@ -373,27 +464,30 @@
   </div>
 
 </section>
-<!-- ================= TRADE-IN ================= -->
-<section class="tradein" id="tradein">
-  <h2>Avalie seu iPhone como entrada</h2>
-  <p class="trade-alert">⚠ Aceitamos somente aparelhos sem peças trocadas</p>
+  </div>
+</section>
 
+<section class="tradein" id="tradein">
+  <h2>📱 Avalie seu iPhone como entrada</h2>
+  <p class="trade-alert">⚠ Não aceitamos aparelhos recondicionados (com peça trocada)!</p>
   <form id="tradeForm">
-    <input type="text" placeholder="Modelo do iPhone" required>
+    <input type="text" placeholder="Modelo do seu iPhone" required>
+    <input type="text" placeholder="Modelo de Interesse ✨" required>
     <input type="text" placeholder="Memória (ex: 128GB)" required>
     <input type="text" placeholder="Cor" required>
     <input type="number" placeholder="Saúde da bateria (%)" required>
-
     <label>
       <input type="checkbox" id="replaced">
       Alguma peça já foi trocada?
     </label>
-
-    <button type="submit">Enviar simulação</button>
+    <button type="submit">Enviar simulação 🏆</button>
   </form>
 </section>
 
-<!-- ================= WHATSAPP ================= -->
+<div class="google-review">
+  <a href="https://g.page/r/CeEXkGJ3KdUUEB0/review" target="_blank">⭐ Avalie-nos no Google</a>
+</div>
+
 <a class="wpp-float" href="https://wa.me/5521967296969" target="_blank">
   <i class="fab fa-whatsapp"></i>
 </a>
@@ -403,7 +497,6 @@
 </footer>
 
 <script>
-/* ===== FILTRO ===== */
 const filterBtns = document.querySelectorAll('.filter-btn');
 const grids = document.querySelectorAll('.grid');
 
@@ -411,52 +504,37 @@ filterBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     filterBtns.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-
     const filter = btn.dataset.filter;
-
     grids.forEach(grid => {
-      grid.style.display =
-        filter === 'all' || grid.dataset.section === filter
-        ? 'grid'
-        : 'none';
+      grid.style.display = (filter === 'all' || grid.dataset.section === filter) ? 'grid' : 'none';
     });
   });
 });
 
-/* ===== BOTÃO COMPRAR ===== */
 document.querySelectorAll('.btn-buy').forEach(btn => {
   btn.addEventListener('click', e => {
     const card = e.target.closest('.card');
-    const modelo = card.querySelector('.modelo, h3').textContent;
+    const modelo = card.querySelector('.modelo').textContent;
     const price = card.querySelector('.price').textContent;
     const tipo = card.classList.contains('lacrado') ? 'Lacrado' : 'Seminovo';
-
     const msg = `Olá! Tenho interesse no ${tipo} ${modelo} (${price}).`;
     window.open(`https://wa.me/5521967296969?text=${encodeURIComponent(msg)}`);
   });
 });
 
-/* ===== TRADE-IN ===== */
 document.getElementById('tradeForm').addEventListener('submit', e => {
   e.preventDefault();
-
-  if (document.getElementById('replaced').checked) {
-    alert('Não aceitamos Iphones recondicionados.');
+  if(document.getElementById('replaced').checked){
+    alert('Não aceitamos iPhones recondicionados.');
     return;
   }
-
-  const data = [...e.target.querySelectorAll('input')]
-    .slice(0,4)
-    .map(i => i.value);
-
-  const msg =
-`Olá, vim do site e simular meu iPhone como entrada:
-Modelo: ${data[0]}
-Memória: ${data[1]}
-Cor: ${data[2]}
-Bateria: ${data[3]}%`;
-iphone de interesse: ${data[4]};
-
+  const inputs = [...e.target.querySelectorAll('input')].slice(0,5).map(i=>i.value);
+  const msg = `Olá, vim do site e quero simular meu iPhone como entrada:
+Meu iPhone: ${inputs[0]}
+Modelo de Interesse: ${inputs[1]}
+Memória: ${inputs[2]}
+Cor: ${inputs[3]}
+Bateria: ${inputs[4]}%`;
   window.open(`https://wa.me/5521967296969?text=${encodeURIComponent(msg)}`);
 });
 </script>
@@ -465,7 +543,4 @@ iphone de interesse: ${data[4]};
 
 
 
-<footer>
-  <p>© 2026 Power Tec • Maricá - RJ</p>
-</footer>
 
