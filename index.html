@@ -2,10 +2,9 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Power Tec | iPhones Lacrados e Seminovos</title>
+<title>Power Tec Maricá | iPhones Lacrados e Seminovos com Garantia</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Power Tec - iPhones lacrados e seminovos com garantia. Há 7 anos no mercado.">
-<meta name="keywords" content="iPhone lacrado, iPhone seminovo, Power Tec, Apple, Maricá">
+<meta name="description" content="Power Tec Maricá - iPhones lacrados e seminovos com garantia. Aceitamos seu iPhone como entrada.">
 <meta name="author" content="Power Tec">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,16 +16,19 @@
 </head>
 <body>
 
+<!-- ================= HEADER ================= -->
 <header>
   <h1>Power <span>Tec</span></h1>
   <p>Há 7 anos no mercado • iPhones com procedência e garantia</p>
-  <div class="social">
-    <a href="https://wa.me/5521967296969" target="_blank"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://instagram.com/_powertec/" target="_blank"><i class="fab fa-instagram"></i></a>
+
+  <div class="cta-sim">
+    <strong>Aceitamos seu iPhone como entrada</strong>
+    <p>Faça uma simulação rápida pelo WhatsApp</p>
+    <a href="#tradein" class="btn-sim">Faça uma simulação</a>
   </div>
 </header>
 
-<!-- FILTROS -->
+<!-- ================= FILTROS ================= -->
 <div class="filters">
   <button class="filter-btn active" data-filter="all">Todos</button>
   <button class="filter-btn" data-filter="lacrado">Lacrados</button>
@@ -34,6 +36,7 @@
 </div>
 
 <!-- ================= LACRADOS ================= -->
+
 <section class="grid" data-section="lacrado">
   <h2>Lacrados <span>• Garantia Apple 1 Ano</span></h2>
 
@@ -103,12 +106,10 @@
 </section>
 
 
-
-  <!-- ================== SEMINOVOS ================== -->
+<!-- ================= SEMINOVOS ================= -->
 <section class="grid" data-section="seminovo">
   <h2>Seminovos <span>ATUALIZADO </span></h2>
  
-
   <!-- iPhone 11 -->
   <div class="card seminovo">
     <i class="fab fa-apple apple-icon"></i>
@@ -373,87 +374,97 @@
 
 </section>
 <!-- ================= TRADE-IN ================= -->
-<section class="tradein">
-  <h2>Troque seu iPhone (Aceitamos seminovos como entrada)</h2>
+<section class="tradein" id="tradein">
+  <h2>Avalie seu iPhone como entrada</h2>
+  <p class="trade-alert">⚠ Aceitamos somente aparelhos sem peças trocadas</p>
+
   <form id="tradeForm">
     <input type="text" placeholder="Modelo do iPhone" required>
-    <input type="text" placeholder="Memória" required>
+    <input type="text" placeholder="Memória (ex: 128GB)" required>
     <input type="text" placeholder="Cor" required>
     <input type="number" placeholder="Saúde da bateria (%)" required>
+
     <label>
-      <input type="checkbox" id="replaced" /> Alguma peça já foi trocada?
+      <input type="checkbox" id="replaced">
+      Alguma peça já foi trocada?
     </label>
-    <button type="submit">Enviar avaliação</button>
+
+    <button type="submit">Enviar simulação</button>
   </form>
 </section>
 
+<!-- ================= WHATSAPP ================= -->
 <a class="wpp-float" href="https://wa.me/5521967296969" target="_blank">
   <i class="fab fa-whatsapp"></i>
 </a>
 
 <footer>
-  <p>© 2026 Power Tec • Maricá - RJ</p>
+  © 2026 Power Tec • Maricá - RJ
 </footer>
 
 <script>
-  // FILTROS
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const grids = document.querySelectorAll('.grid');
+/* ===== FILTRO ===== */
+const filterBtns = document.querySelectorAll('.filter-btn');
+const grids = document.querySelectorAll('.grid');
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.dataset.filter;
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
 
-      grids.forEach(grid => {
-        if(filter === 'all' || grid.dataset.section === filter) {
-          grid.style.display = 'grid';
-        } else {
-          grid.style.display = 'none';
-        }
-      });
+    const filter = btn.dataset.filter;
+
+    grids.forEach(grid => {
+      grid.style.display =
+        filter === 'all' || grid.dataset.section === filter
+        ? 'grid'
+        : 'none';
     });
   });
+});
 
-  // APPLE ICON HOVER
-  const appleIcons = document.querySelectorAll('.apple-icon');
-  appleIcons.forEach(icon => {
-    icon.style.transition = 'color 0.3s';
-    icon.addEventListener('mouseenter', () => icon.style.color = '#ff8c00');
-    icon.addEventListener('mouseleave', () => icon.style.color = '#000');
+/* ===== BOTÃO COMPRAR ===== */
+document.querySelectorAll('.btn-buy').forEach(btn => {
+  btn.addEventListener('click', e => {
+    const card = e.target.closest('.card');
+    const modelo = card.querySelector('.modelo, h3').textContent;
+    const price = card.querySelector('.price').textContent;
+    const tipo = card.classList.contains('lacrado') ? 'Lacrado' : 'Seminovo';
+
+    const msg = `Olá! Tenho interesse no ${tipo} ${modelo} (${price}).`;
+    window.open(`https://wa.me/5521967296969?text=${encodeURIComponent(msg)}`);
   });
+});
 
-  // BOTÕES COMPRAR
-  const buyButtons = document.querySelectorAll('.btn-buy');
-  buyButtons.forEach(btn => {
-    btn.addEventListener('click', e => {
-      const card = e.target.closest('.card');
-      const modelo = card.querySelector('.modelo').textContent;
-      const price = card.querySelector('.price').textContent;
-      const link = `https://wa.me/5521967296969?text=Olá!%20Tenho%20interesse%20no%20modelo%20${encodeURIComponent(modelo)}%20com%20preço%20de%20${encodeURIComponent(price)}`;
-      window.open(link, '_blank');
-    });
-  });
+/* ===== TRADE-IN ===== */
+document.getElementById('tradeForm').addEventListener('submit', e => {
+  e.preventDefault();
 
-  // TRADE-IN FORM
-  const tradeForm = document.getElementById('tradeForm');
-  tradeForm.addEventListener('submit', e => {
-    e.preventDefault();
-    const modelo = tradeForm[0].value;
-    const memoria = tradeForm[1].value;
-    const cor = tradeForm[2].value;
-    const bateria = tradeForm[3].value;
-    const trocada = document.getElementById('replaced').checked;
+  if (document.getElementById('replaced').checked) {
+    alert('Não aceitamos aparelhos com peças trocadas.');
+    return;
+  }
 
-    if(trocada){
-      alert("Não aceitamos iPhones com peças trocadas (recondicionados).");
-      return;
-    }
+  const data = [...e.target.querySelectorAll('input')]
+    .slice(0,4)
+    .map(i => i.value);
 
-    const msg = `Olá!%20Quero%20avaliar%20meu%20iPhone%20como%20entrada:%0AModelo:%20${encodeURIComponent(modelo)}%0AMemória:%20${encodeURIComponent(memoria)}%0ACor:%20${encodeURIComponent(cor)}%0ASaúde%20da%20bateria:%20${encodeURIComponent(bateria)}%25`;
-    window.open(`https://wa.me/5521967296969?text=${msg}`, '_blank');
-  });
+  const msg =
+`Quero simular meu iPhone como entrada:
+Modelo: ${data[0]}
+Memória: ${data[1]}
+Cor: ${data[2]}
+Bateria: ${data[3]}%`;
+
+  window.open(`https://wa.me/5521967296969?text=${encodeURIComponent(msg)}`);
+});
 </script>
 </body>
 </html>
+
+
+
+<footer>
+  <p>© 2026 Power Tec • Maricá - RJ</p>
+</footer>
+
